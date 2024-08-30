@@ -1,0 +1,19 @@
+created:
+    - database/factories/TipoUsuarioFactory.php
+    - database/factories/CodigoWifiFactory.php
+    - database/factories/AsignamientoCodigosFactory.php
+    - database/factories/VentasFactory.php
+    - database/migrations/2024_08_30_090823_create_tipo_usuarios_table.php
+    - database/migrations/2024_08_30_090824_create_codigo_wifis_table.php
+    - database/migrations/2024_08_30_090825_create_asignamiento_codigos_table.php
+    - database/migrations/2024_08_30_090826_create_ventas_table.php
+    - app/Models/TipoUsuario.php
+    - app/Models/CodigoWifi.php
+    - app/Models/AsignamientoCodigos.php
+    - app/Models/Ventas.php
+models:
+    User: {  }
+    TipoUsuario: { nombre: string, descripccion: string, relationships: { hasMany: User } }
+    CodigoWifi: { codigo: string, etsado: string, fecha_creacion: date, valor: float, relationships: { hasMany: AsignamientoCodigos } }
+    AsignamientoCodigos: { fecha_asignamiento: date, usuario_id: id, codigo_id: id, relationships: { hasMany: Ventas } }
+    Ventas: { asignacion_id: id, fecha_venta: date, cantidad: number }
